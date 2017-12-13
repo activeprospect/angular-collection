@@ -1,5 +1,5 @@
-(function(angular, _){
-'use strict';
+var angular = require('angular');
+var _ = require('lodash');
 
 // Create local references to array methods we'll want to use later.
 var array = [];
@@ -44,6 +44,11 @@ angular.module('ngCollection', [])
           }
 
           if (collection) {
+            var buildDOMElement = function(clone) {
+              $animate.enter(clone, null, angular.element(previousNode));
+              previousNode = clone;
+              previousElements.push(clone);
+            };
             for (var index = 0, length = collection.length; index < length; index++) {
               var model = collection.models[index];
               var childScope = $scope.$new();
@@ -64,11 +69,7 @@ angular.module('ngCollection', [])
               // jshint bitwise: true
 
               // Build the DOM element
-              $transclude(childScope, function(clone) {
-                $animate.enter(clone, null, angular.element(previousNode));
-                previousNode = clone;
-                previousElements.push(clone);
-              });
+              $transclude(childScope, buildDOMElement);
             }
           }
         });
@@ -156,7 +157,7 @@ angular.module('ngCollection', [])
 
         // Merge the new data into the model
         _.extend(this.attributes, attributes);
-        
+
         return this;
       };
 
@@ -474,7 +475,7 @@ angular.module('ngCollection', [])
     return function(url, collection, options){
       var defaultParams;
 
-      // Add backwards compatibility for 
+      // Add backwards compatibility for
       // previous arguments: (url, defaultParams, collection)
       if (_.isPlainObject(collection)) {
         defaultParams = collection;
@@ -486,4 +487,3 @@ angular.module('ngCollection', [])
       return new Collection(url, collection, options);
     };
   }]);
-})(window.angular, window._);

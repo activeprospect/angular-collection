@@ -1,0 +1,26 @@
+{
+  "name": "angular-collection",
+  "version": "0.8.1",
+  "description": "Backbone-like collections for Angular",
+  "main": "main.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/activeprospect/angular-collection.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/activeprospect/angular-collection/issues"
+  },
+  "homepage": "https://github.com/activeprospect/angular-collection#readme",
+  "dependencies": {
+    "angular": "^1.6.7",
+    "lodash": "^4.17.4"
+  }
+}
