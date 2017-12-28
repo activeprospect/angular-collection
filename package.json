@@ -19,8 +19,10 @@
     "url": "https://github.com/activeprospect/angular-collection/issues"
   },
   "homepage": "https://github.com/activeprospect/angular-collection#readme",
+  "peerDependencies": {
+    "angular": "^1.6.7"
+  },
   "dependencies": {
-    "angular": "^1.6.7",
-    "lodash": "^4.17.4"
+    "lodash": ">=3.0.0"
   }
 }
