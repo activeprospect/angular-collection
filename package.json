@@ -1,6 +1,6 @@
 {
-  "name": "angular-collection",
   "version": "0.8.1",
+  "name": "@activeprospect/angular-collection",
   "description": "Backbone-like collections for Angular",
   "main": "main.js",
   "directories": {
