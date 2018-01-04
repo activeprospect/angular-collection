@@ -205,6 +205,8 @@ angular.module('ngCollection', [])
   .factory('$collection', ['$http', '$q', '$model', function($http, $q, $model){
     // Collection constructor
     Collection = function(url, collection, options){
+      var that = this;
+
       this.url = url || '/';
 
       options = options || {};
