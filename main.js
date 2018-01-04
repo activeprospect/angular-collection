@@ -34,7 +34,7 @@ angular.module('ngCollection', [])
 
           // Dump existing DOM nodes
           if (previousElements.length) {
-            _.each(previousElements, function(element){
+            _.forEach(previousElements, function(element){
               $animate.leave(element, function(){
                 element = null;
               });
@@ -268,7 +268,7 @@ angular.module('ngCollection', [])
 
           var models = response.data;
           // Loop through models
-          _.each(models, function(model){
+          _.forEach(models, function(model){
             // Push new model
             that.push(model);
           });
@@ -304,7 +304,7 @@ angular.module('ngCollection', [])
         sync.then(function(response){
           var ids = [];
 
-          _.each(response.data, function(attributes){
+          _.forEach(response.data, function(attributes){
             var id = attributes.id;
             var model = that.find({id: id});
 
@@ -318,7 +318,7 @@ angular.module('ngCollection', [])
           });
 
           // Remove any models that aren't present in the lastest data
-          _.each(_.clone(that.models), function(model){
+          _.forEach(_.clone(that.models), function(model){
             try {
               if (ids.indexOf(model.attributes.id) < 0) {
                 that.remove(model);
@@ -450,17 +450,17 @@ angular.module('ngCollection', [])
       // If a collection has been supplied, let's use that
       if (collection && collection.length) {
         // Loop through models
-        _.each(collection, function(model){
+        _.forEach(collection, function(model){
           // Push new model
-          this.push(model);
-        }, this);
+          that.push(model);
+        });
       }
     };
 
     // Stolen straight from Backbone
     var methods = ['each', 'filter', 'first', 'forEach', 'indexOf', 'last', 'map', 'some'];
 
-    _.each(methods, function(method) {
+    _.forEach(methods, function(method) {
       Collection.prototype[method] = function() {
         // Slice returns arguments as an array
         var args = slice.call(arguments);
